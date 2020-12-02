@@ -5,24 +5,42 @@
 - Index __/ecomm-products__ for product documents
 ```JSON
 {
+<<<<<<< HEAD
   // Product Id
  "product_id" : "P0001",  
  // name with translations
+=======
+  /* Product Id */
+ "product_id" : "P0001",  
+ /* name with translations */
+>>>>>>> main
  "name" : { 
   "it" : "Apple iPhone 12",
   "en" : "Apple iPhone 12"
  },
+<<<<<<< HEAD
  // short description with translations
+=======
+ /* short description with translations */
+>>>>>>> main
  "short_description" : { 
   "it" : "iPhone 12 Pro e iPhone 12 Pro Max sono resistenti agli schizzi, all'acqua e alla polvere e sono stati testati in condizioni di laboratorio controllate con una classificazione IP68 secondo lo standard IEC 60529 (profondità massima di 6 metri fino a 30 minuti).",
   "en" : "iPhone 12 Pro and iPhone 12 Pro Max are splash, water, and dust resistant and were tested under controlled laboratory conditions with a rating of IP68 under IEC standard 60529 (maximum depth of 6 meters up to 30 minutes)."
  },
+<<<<<<< HEAD
  // brand object
+=======
+ /* brand object */
+>>>>>>> main
  "brand" : {
   "id" : "B0001",
   "name" : "Apple"
  },
+<<<<<<< HEAD
  // categories object
+=======
+ /* categories object */
+>>>>>>> main
  "categories" : [
   {
    "id" : "C0001",
@@ -39,7 +57,11 @@
    }
   }
  ],
+<<<<<<< HEAD
  // prices object
+=======
+ /* prices object */
+>>>>>>> main
  "prices" : {
   "site_IT" :
   {
@@ -70,6 +92,7 @@ The product contains the following details:
 
 ## Mapping template for "products indexes"
 
+<<<<<<< HEAD
 Template "cleaning"
 
 ```REST
@@ -78,6 +101,8 @@ DELETE /_template/ecomm-products
 
 Template creation
 
+=======
+>>>>>>> main
 ```JSON
 PUT /_template/ecomm-products
 {
@@ -418,7 +443,11 @@ POST /ecomm-products/_doc/P0004
 
 # QUERIES & COMMANDS
 
+<<<<<<< HEAD
 ## Terms queries
+=======
+## Search products by "brand"
+>>>>>>> main
 
 All products by Apple (queried by brand.id), in the italian "Site", with score (query context)
 
@@ -528,9 +557,13 @@ GET /ecomm-products/_search
 }
 ```
 
+<<<<<<< HEAD
 All smartphones with price range between 200€ and 600€, in the italian "Site" (filter context)
 
 ```JSON
+=======
+/*range query*/
+>>>>>>> main
 GET /ecomm-products/_search
 {
   "query": {
@@ -538,7 +571,11 @@ GET /ecomm-products/_search
      "filter": [
        {
             "term": {
+<<<<<<< HEAD
               "categories.id": "C0002"
+=======
+              "category.id": "C0002"
+>>>>>>> main
             }
       },
       {
@@ -558,6 +595,7 @@ GET /ecomm-products/_search
     }
   }
 }
+<<<<<<< HEAD
 ```
 
 ## Sorting by fields
@@ -569,12 +607,22 @@ Sort smartphones by price "asc". For rapid verifications the "source" contains o
 GET /ecomm-products/_search
 {
   "_source": ["product_id","name.it","prices.site_IT.value"],
+=======
+
+/*sorting*/
+GET /ecomm-products/_search
+{
+>>>>>>> main
   "query": {
     "bool": {
      "filter": [
        {
             "term": {
+<<<<<<< HEAD
               "categories.id": "C0002"
+=======
+              "category.id": "C0002"
+>>>>>>> main
             }
       },
        {
@@ -594,6 +642,7 @@ GET /ecomm-products/_search
   ]
 }
 
+<<<<<<< HEAD
 ```
 
 ## Match queries
@@ -602,6 +651,14 @@ A multi-match query without specific field boost.
 
 ```JSON
 
+=======
+-------------------------------
+
+OPERATIONS - SEARCH
+-------------------------------
+
+/*multi-match senza boost*/
+>>>>>>> main
 GET /ecomm-products/_search
 {
   "query": {
@@ -625,12 +682,17 @@ GET /ecomm-products/_search
     }
   }
 }
+<<<<<<< HEAD
 ```
 
 A mixed match query, with the speficiation of boost on particular fields
 
 ```JSON
 
+=======
+
+/*match con boost/multi-match*/
+>>>>>>> main
 GET /ecomm-products/_search
 {
   "query": {
@@ -669,4 +731,13 @@ GET /ecomm-products/_search
     }
   }
 }
+<<<<<<< HEAD
 ```
+=======
+
+/*Aggregazione  brands*/
+GET /ecomm-products/_search
+{
+ "aggs"
+}
+>>>>>>> main
