@@ -2,7 +2,8 @@
 
 ## Structure of the Index
 
-- Index __/ecomm-products__ for product documents
+Index __/ecomm-products__ for product documents
+
 ```JSON
 {
   // Product Id
