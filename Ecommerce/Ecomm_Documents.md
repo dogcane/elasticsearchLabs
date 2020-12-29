@@ -17,6 +17,7 @@ POST /ecomm-products/_doc/P0001
  "brand" : {
   "id" : "B0001",
   "name" : "Apple"
+
  },
  "categories" : [
   {

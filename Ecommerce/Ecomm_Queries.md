@@ -219,25 +219,11 @@ GET /ecomm-products/_search
     "bool": {
       "must": [
         {
-          "bool": {
-            "should": [
-              {
-                "match": {
-                  "name.it": {
-                    "query": "oneplus nord",
-                    "fuzziness": "AUTO",
-                    "boost": 2
-                  }
-                }
-              },
-              {
-                "multi_match": {
-                  "query":  "oneplus nord",
-                  "fields": ["short_description.it", "long_description.it", "brand.name"],
-                  "fuzziness": "AUTO"
-                }
-              }
-            ]
+          "multi_match": {
+            "query":  "oneplus nord",
+            "operator": "or", 
+            "fields": ["name.en^2","short_description.en", "long_description.en", "brand.name"],
+            "fuzziness": "AUTO"
           }
         }
       ],
@@ -248,6 +234,79 @@ GET /ecomm-products/_search
           }
         }
       ]
+    }
+  }
+}
+```
+
+## Facet query (with aggregations)
+
+A sample "facet" query for brands (multi aggregation sample)
+
+```JSON
+
+GET /ecomm-products/_search
+{
+  "size":0,
+  "aggs" : {
+    "brand_facet": {
+        "terms": {
+          "field": "brand.id", 
+          "size": 10
+        },
+        "aggs": {
+              "brand_facet_name": {
+                  "terms": {
+                      "field": "brand.name.raw"
+                  }
+              }
+          }
+    }
+  }
+}
+```
+
+A sample "facet" query for brands (script sample)
+
+```JSON
+
+GET /ecomm-products/_search
+{
+  "size":0,
+  "aggs" : {
+    "brand_facet" : {
+      "terms": {
+        "script": "doc['brand.id'].value + '$$' + doc['brand.name.raw'].value"
+      }
+    }
+  }
+}
+```
+
+"Facet" query for brands & categories (script version)
+
+```JSON
+
+GET /ecomm-products/_search
+{
+  "size":0,
+  "aggs" : {
+    "brand_facet" : {
+      "terms": {
+        "script": "doc['brand.id'].value + '$$' + doc['brand.name.raw'].value"
+      }
+    },
+    "categories_facet" : {
+      "nested": {
+        "path": "categories"
+      },
+      "aggs": {
+        "categories_facet_nested": {
+          "terms": {
+            "script": "doc['categories.id'].value + '$$' + doc['categories.description.it.raw'].value"
+          }
+        }
+      }
     }
   }
 }

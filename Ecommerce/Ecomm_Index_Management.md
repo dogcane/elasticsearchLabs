@@ -158,36 +158,60 @@ PUT /_template/ecomm-products
     "type" : "object",
     "properties" : {
      "id" : {
-      "type": "keyword"
+      "type": "keyword"      
      },
      "name" : {
-      "type": "text"
-     }
+      "type": "text",
+      "fields": {
+          "raw": { 
+            "type": "keyword",
+            "index": false
+          }
+        }
+      }
     }
    },
    "categories" : {
-    "type" : "object",
+    "type" : "nested",
+    "include_in_parent":true,
     "properties" : {
      "id" : {
-      "type": "keyword",
-      "doc_values": false
+      "type": "keyword"
+     },
+     "parentId" : {
+      "type": "keyword"
      },
      "description" : {
+      "type" : "object",
       "properties" : {
        "it" : {
         "type": "text",
-        "analyzer": "italian"  
-       },
+        "analyzer": "italian",
+        "doc_values": false,
+        "fields": {
+            "raw": { 
+              "type": "keyword",
+              "index": false
+            }
+          }
+        },
        "en" : {
         "type": "text",
-        "analyzer": "english"
+        "analyzer": "english",
+        "doc_values": false,
+        "fields": {
+            "raw": { 
+              "type": "keyword",
+              "index": false
+            }
+          }
+        }
        }
       }
-     }      
+     }    
     }
    }
   }
- }
 }
 ```
 
