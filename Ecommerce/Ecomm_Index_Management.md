@@ -68,7 +68,6 @@ The product contains the following details:
 - Categories details
 - Prices for specific site_Ids (multi site support)
 
-
 ## Mapping template for "products indexes"
 
 Template "cleaning"
