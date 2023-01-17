@@ -164,4 +164,40 @@ Index __/imdb-titles__ for titles documents
 }
 ```
 
+Index __/imdb-titles__ for titles documents
+
+```JSON
+{
+  "id":"tt2310910",
+  "seriesTitleId":"tt2193021",
+  "primaryTitle":"Arrow",
+  "originalTitle":"Arrow",
+  "seasonNumber": 1,
+  "episodeNumber": 2,
+  "primaryTitle": "Honor Thy Father",
+  "originalTitle": "Honor Thy Father",
+  "runtimeMinutes": 45,
+  "airedOnYear": 2012
+
+  "episodes": [
+    {
+      "seasonNumber": 1,
+      "episodeNumber": 1,
+      "primaryTitle": "Pilot",
+      "originalTitle": "Pilot",
+      "runtimeMinutes": 45,
+      "airedOnYear": 2012
+    },
+    {
+      "seasonNumber": 1,
+      "episodeNumber": 2,
+      "primaryTitle": "Honor Thy Father",
+      "originalTitle": "Honor Thy Father",
+      "runtimeMinutes": 45,
+      "airedOnYear": 2012
+    }
+  ]
+}
+```
+
 [&lt; Back to summary](IMDB_Sample.md)
